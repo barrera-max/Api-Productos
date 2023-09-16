@@ -1,9 +1,10 @@
 import { Producto } from "../models/producto.js";
 
 
-async function getAll(){
-    return (await Producto.findAll({}))
+async function  getAll(){
+    return await Producto.findAll({}) 
 }
+
 
 async function updateById(valor, nuevoStock){
     const prod = await Producto.findOne({where:{id: valor}})
@@ -16,9 +17,14 @@ async function updateById(valor, nuevoStock){
 
 }
 
+async function add(nuevo){
+    await Producto.create(nuevo)
+}
+
 export default{
     getAll,
-    updateById
+    updateById,
+    add
 }
 
 

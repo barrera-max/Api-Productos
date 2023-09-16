@@ -1,8 +1,13 @@
+import prod from './services/prod_services.js'
+import { Sequelize } from 'sequelize'
 import * as http from 'http'
 
 
+
+const productos = []
+
 let data = null
-http.createServer((req, res)=>{
+http.createServer(async (req, res)=>{
     // procesar el pedido HTTP y generar la respuesta correspondiente:
     const {url, method} = req
     console.log(`Pedido HTTP con URL: ${url}, mediante: ${method}`)
@@ -15,7 +20,7 @@ http.createServer((req, res)=>{
                 data = {mensaje: 'BIENVENIDO A LA API DE PRODUCTOS!'}
             
             if(url == '/productos')
-                data = {mensaje: 'MOSTRANDO PRODUCTOS...'} 
+                data = await prod.getAll()
                 break;
         }
         case 'POST':{

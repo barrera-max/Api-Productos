@@ -2,7 +2,7 @@
 import { DataTypes } from "sequelize"
 import {sequelize} from "../data/cnn_db.js"
 
-export  const Producto  = sequelize.define("Producto", {
+ export   const Producto  = sequelize.define("productos", {
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
